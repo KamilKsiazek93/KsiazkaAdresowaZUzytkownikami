@@ -1,0 +1,11 @@
+vector<Contact> sendContactToVector (int userID)
+{
+    vector<Contact> friends = sendTheContact();
+    vector<Contact> findingVector;
+    for (int i = 0; i < friends.size(); ++i)
+    {
+        if (friends[i].idOfUser == userID)
+            findingVector.push_back(friends[i]);
+    }
+    return findingVector;
+}
