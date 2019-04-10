@@ -1,0 +1,9 @@
+int countContacts ()
+{
+    int numberOfContacts = 0;
+    ifstream file("MojeKontakty.txt");
+    string line;
+    while (getline(file, line))
+        numberOfContacts++;
+    return numberOfContacts;
+}
