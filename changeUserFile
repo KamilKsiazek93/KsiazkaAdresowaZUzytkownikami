@@ -1,0 +1,11 @@
+void changeUserFile (vector<User> usersOfBook)
+{
+    ofstream file("Uzytkownicy.txt", ios::in | ios::trunc);
+    for (int i = 0; i < usersOfBook.size(); ++i)
+    {
+        file << usersOfBook[i].id << '|';
+        file << usersOfBook[i].nick << '|';
+        file << usersOfBook[i].password << '|' << endl;
+    }
+    file.close();
+}
