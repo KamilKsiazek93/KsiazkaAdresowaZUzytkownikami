@@ -1,0 +1,7 @@
+int lastID ()
+{
+    vector<Contact> friends = sendTheContact();
+    int sizeOfVector = countContacts();
+    int findingId = friends[sizeOfVector-1].id;
+    return findingId;
+}
