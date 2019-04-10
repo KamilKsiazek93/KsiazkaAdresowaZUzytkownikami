@@ -1,0 +1,51 @@
+vector<Contact> sendTheContact()
+{
+    vector<Contact> friends;
+    Contact newContact;
+    char sign = '|';
+    int numberOfSign = 0;
+    string partOfLine;
+    fstream file;
+    file.open("MojeKontakty.txt", ios::in);
+    if (file.good() == true)
+    {
+        while(getline(file, partOfLine, sign))
+        {
+            switch(numberOfSign)
+            {
+            case 0:
+                newContact.id = atoi(partOfLine.c_str());
+                break;
+            case 1:
+                newContact.idOfUser = atoi(partOfLine.c_str());
+                break;
+            case 2:
+                newContact.name = partOfLine;
+                break;
+            case 3:
+                newContact.surname = partOfLine;
+                break;
+            case 4:
+                newContact.numberOfPhone = partOfLine;
+                break;
+            case 5:
+                newContact.mail = partOfLine;
+                break;
+            case 6:
+                newContact.address = partOfLine;
+                break;
+            }
+            if (numberOfSign >= 6)
+            {
+                numberOfSign = 0;
+                friends.push_back(newContact);
+            }
+            else
+            {
+                numberOfSign++;
+            }
+        }
+        file.close();
+    }
+    return friends;
+}
