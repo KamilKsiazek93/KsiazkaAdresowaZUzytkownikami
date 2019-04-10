@@ -1,0 +1,36 @@
+vector<User> sendUsers (vector<User> userBookOfAddresses)
+{
+    User newUser;
+    char sign = '|';
+    int numberOfSign = 0;
+    string partOfLine;
+    fstream file;
+    file.open("Uzytkownicy.txt", ios::in);
+    if (file.good() == true)
+    {
+        while(getline(file, partOfLine, sign))
+        {
+            switch(numberOfSign)
+            {
+            case 0:
+                newUser.id = atoi(partOfLine.c_str());
+                break;
+            case 1:
+                newUser.nick = partOfLine;
+                break;
+            case 2:
+                newUser.password = partOfLine;
+                break;
+            }
+            if (numberOfSign >= 2)
+            {
+                numberOfSign = 0;
+                userBookOfAddresses.push_back(newUser);
+            }
+            else
+                numberOfSign++;
+        }
+        file.close();
+    }
+    return userBookOfAddresses;
+}
