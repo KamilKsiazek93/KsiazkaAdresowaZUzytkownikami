@@ -1,0 +1,35 @@
+vector<User> signUp (vector<User> userBookOfAddresses)
+{
+    User newUser;
+    int id = 0;
+    if (userBookOfAddresses.size() == 0)
+        id = 0;
+    else
+        id = userBookOfAddresses[userBookOfAddresses.size()-1].id;
+    string nickname, userPassword;
+    fstream file;
+    cout << "Podaj nick nowego uzytkownika: ";
+    cin >> nickname;
+    for (int i = 0; i < userBookOfAddresses.size(); ++i)
+    {
+        while (userBookOfAddresses[i].nick == nickname)
+        {
+            cout << "Podana nazwa uzytkownika jest juz zajeta! Podaj inna nazwe: ";
+            cin >> nickname;
+        }
+    }
+    cout << "Podaj haslo: ";
+    cin >> userPassword;
+    newUser.id = id+1;
+    newUser.nick = nickname;
+    newUser.password = userPassword;
+    userBookOfAddresses.push_back(newUser);
+    file.open("Uzytkownicy.txt", ios::out | ios::app);
+    file << newUser.id << '|';
+    file << newUser.nick << '|';
+    file << newUser.password << '|' << endl;
+    file.close();
+    cout << "Dodano nowego uzytkownika!" << endl;
+    system("pause");
+    return userBookOfAddresses;
+}
