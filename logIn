@@ -1,0 +1,22 @@
+int logIn (vector<User> userBookOfAddresses)
+{
+    string nickname, userPassword;
+    cout << "PANEL LOGOWANIA" << endl;
+    cout << endl;
+    cout << "Podaj nick: ";
+    cin >> nickname;
+    cout << "Podaj haslo: ";
+    cin >> userPassword;
+    for (int i = 0; i < userBookOfAddresses.size(); ++i)
+    {
+        while (userBookOfAddresses[i].nick == nickname && userBookOfAddresses[i].password != userPassword)
+        {
+            cout << "Podane haslo jest niepoprawne. Sprobuj jeszcze raz: ";
+            cin >> userPassword;
+        }
+        if (userBookOfAddresses[i].nick == nickname && userBookOfAddresses[i].password == userPassword)
+            return userBookOfAddresses[i].id;
+    }
+    system("pause");
+    return 0;
+}
