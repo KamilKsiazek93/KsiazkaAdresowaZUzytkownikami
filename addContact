@@ -1,0 +1,39 @@
+vector<Contact> addContact(vector<Contact> friends, int userID, int lastIdOfContact)
+{
+    int id = 0;
+    Contact newContact;
+    fstream file;
+    id = lastIdOfContact;
+    string name, surname, numberOfPhone, mail, address;
+    cout << "Podaj imie nowego kontaktu: ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, name);
+    cout << "Podaj nazwisko nowego kontaktu: ";
+    getline(cin, surname);
+    cout << "Podaj e-mail: ";
+    getline(cin, mail);
+    cout << "Podaj numer telefonu: ";
+    getline(cin, numberOfPhone);
+    cout << "Podaj adres: ";
+    getline(cin, address);
+    newContact.id = id + 1;
+    newContact.idOfUser = userID;
+    newContact.name = name;
+    newContact.surname = surname;
+    newContact.mail = mail;
+    newContact.numberOfPhone = numberOfPhone;
+    newContact.address = address;
+    friends.push_back(newContact);
+    file.open("MojeKontakty.txt", ios::out | ios::app);
+    file << newContact.id << '|';
+    file << newContact.idOfUser << '|';
+    file << newContact.name << '|';
+    file << newContact.surname << '|';
+    file << newContact.mail << '|';
+    file << newContact.numberOfPhone << '|';
+    file << newContact.address << '|' << endl;
+    file.close();
+    cout << "Dodano nowy kontakt!" << endl;
+    system("pause");
+    return friends;
+}
