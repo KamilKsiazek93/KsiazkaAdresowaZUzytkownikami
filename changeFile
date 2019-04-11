@@ -1,0 +1,40 @@
+void changeFile (vector<Contact> friends, int idContact)
+{
+    vector<Contact> allContacts = sendTheContact();
+    fstream fileOrginal, fileTemporary;
+    fileOrginal.open("MojeKontakty.txt", ios::in);
+    fileTemporary.open("MojeKontaktyTymczasowy.txt", ios::out | ios::app);
+    for (int i = 0; i < allContacts.size(); ++i)
+    {
+        if (allContacts[i].id != idContact)
+        {
+            fileTemporary << allContacts[i].id << '|';
+            fileTemporary << allContacts[i].idOfUser << '|';
+            fileTemporary << allContacts[i].name << '|';
+            fileTemporary << allContacts[i].surname << '|';
+            fileTemporary << allContacts[i].numberOfPhone << '|';
+            fileTemporary << allContacts[i].mail << '|';
+            fileTemporary << allContacts[i].address << '|' << endl;
+        }
+        else
+        {
+            for (int j = 0; j < friends.size(); ++j)
+            {
+                if (friends[j].id == idContact)
+                {
+                    fileTemporary << friends[j].id << '|';
+                    fileTemporary << friends[j].idOfUser << '|';
+                    fileTemporary << friends[j].name << '|';
+                    fileTemporary << friends[j].surname << '|';
+                    fileTemporary << friends[j].numberOfPhone << '|';
+                    fileTemporary << friends[j].mail << '|';
+                    fileTemporary << friends[j].address << '|' << endl;
+                }
+            }
+        }
+    }
+    fileOrginal.close();
+    fileTemporary.close();
+    remove("MojeKontakty.txt");
+    rename("MojeKontaktyTymczasowy.txt", "MojeKontakty.txt");
+}
