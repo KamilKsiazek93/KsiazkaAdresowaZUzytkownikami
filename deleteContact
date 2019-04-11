@@ -1,0 +1,25 @@
+vector<Contact> deleteContact(vector<Contact> &friends)
+{
+    char ifErase;
+    int userID = 0;
+    cout << "Podaj id adresata, ktorego chcesz usunac: ";
+    cin >> userID;
+    for (vector<Contact>::iterator itr = friends.begin(); itr != friends.end(); ++itr)
+    {
+        if (itr->id == userID)
+        {
+            cout << "Czy na pewno chcesz usunac tego adresata z ksiazki? Jeœli tak wcisnij 't' ";
+            cin >> ifErase;
+            if (ifErase == 't')
+            {
+                friends.erase(itr);
+                changeFile(friends, userID);
+                return friends;
+            }
+            else
+                return friends;
+        }
+    }
+    system("pause");
+    return friends;
+}
