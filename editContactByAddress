@@ -1,0 +1,17 @@
+vector<Contact> editContactByAddress(vector<Contact> friends, int idContact)
+{
+    string newAddress;
+    for (int i =0; i < friends.size(); ++i)
+    {
+        if (friends[i].id == idContact)
+        {
+            cout << "Podaj nowy adres: ";
+            getline(cin, newAddress);
+            friends[i].address = newAddress;
+            changeFile(friends, idContact);
+        }
+    }
+    cout << "Dane zostaly zmienione!" << endl;
+    system("pause");
+    return friends;
+}
