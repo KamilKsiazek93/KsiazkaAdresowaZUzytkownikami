@@ -1,0 +1,17 @@
+vector<Contact> editContactByName(vector<Contact> friends, int idContact)
+{
+    string newName;
+    for (int i =0; i < friends.size(); ++i)
+    {
+        if (friends[i].id == idContact)
+        {
+            cout << "Podaj nowe imie: ";
+            cin >> newName;
+            friends[i].name = newName;
+            changeFile(friends, idContact);
+        }
+    }
+    cout << "Dane zostaly zmienione!" << endl;
+    system("pause");
+    return friends;
+}
