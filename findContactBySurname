@@ -1,0 +1,21 @@
+int findContactBySurname(vector<Contact> friends)
+{
+    string findingSurname;
+    cout << "Podaj nazwisko: ";
+    cin >> findingSurname;
+    for (int i = 0; i < friends.size(); i++)
+    {
+        if (friends[i].surname == findingSurname)
+        {
+            cout << friends[i].id << '|';
+            cout << friends[i].idOfUser << '|';
+            cout << friends[i].name << '|';
+            cout << friends[i].surname << '|';
+            cout << friends[i].mail << '|';
+            cout << friends[i].numberOfPhone << '|';
+            cout << friends[i].address << '|' << endl;
+        }
+    }
+    system("pause");
+    return 0;
+}
