@@ -1,0 +1,17 @@
+vector<Contact> editContactByPhoneNumber(vector<Contact> friends, int idContact)
+{
+    string newPhoneNumber;
+    for (int i =0; i < friends.size(); ++i)
+    {
+        if (friends[i].id == idContact)
+        {
+            cout << "Podaj nowy numer telefonu: ";
+            cin >> newPhoneNumber;
+            friends[i].numberOfPhone = newPhoneNumber;
+            changeFile(friends, idContact);
+        }
+    }
+    cout << "Dane zostaly zmienione!" << endl;
+    system("pause");
+    return friends;
+}
